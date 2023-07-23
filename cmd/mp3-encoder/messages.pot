@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-23 12:12+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.go:28
+msgid "[Error] Both input file and output file are required.\n"
+msgstr ""
+
+#: main.go:34
+msgid "failed to open input file %q: %+v"
+msgstr ""
+
+#: main.go:40
+msgid "failed to open output file %q: %+v"
+msgstr ""
+
+#: main.go:47
+msgid "failed to create lame: %+v"
+msgstr ""
+
+#: main.go:63
+msgid "failed to encode: %+v"
+msgstr ""
+
+#: main.go:92
+#, c-format
+msgid "Usage: %s -i <input file> -o <output file> [settings]"
+msgstr ""
+
+#: main.go:93
+msgid "  -i <input file>\tthe input file name, wav or pcm"
+msgstr ""
+
+#: main.go:94
+msgid "  -o <output file>\tthe output mp3 file name"
+msgstr ""
+
+#: main.go:95
+msgid "  [settings]"
+msgstr ""
+
+#: main.go:96
+msgid ""
+"    -inBigEndian[=false]\tif the input file is in big-endian (default false)"
+msgstr ""
+
+#: main.go:97
+msgid "    -inSampleRate <Hz>\t\tsample rate of input file (default 24000)"
+msgstr ""
+
+#: main.go:98
+msgid "    -inChannels <num>\t\tchannels of input file, 1 or 2 (default 1)"
+msgstr ""
+
+#: main.go:99
+msgid "    -inBits <num>\t\tthe bit count of each sample (default 16)"
+msgstr ""
+
+#: main.go:100
+msgid ""
+"    -outSampleRate <Hz>\t\tsample rate of output file (default 0, means same "
+"of input)"
+msgstr ""
+
+#: main.go:101
+msgid ""
+"    -outChannels <num>\t\tchannels of output file, 1 or 2 (default 0, means "
+"same of input)"
+msgstr ""
+
+#: main.go:102
+msgid "    -quality <num>\t\tquality, 0-9, 0-highest, 9-lowest (default 0)"
+msgstr ""
+
+#: main.go:103
+msgid "    -lang <path>\t\tpath to po/mo file or dir"
+msgstr ""

@@ -1,0 +1,92 @@
+# Chinese translations for mp3-encoder package
+# mp3-encoder 软件包的简体中文翻译.
+# Copyright (C) 2023 THE mp3-encoder'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mp3-encoder package.
+# YouthLin Chen <youthlinchen@outlook.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mp3-encoder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-23 11:57+0800\n"
+"PO-Revision-Date: 2023-07-23 11:44+0800\n"
+"Last-Translator: YouthLin Chen <youthlinchen@outlook.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.go:28
+msgid "[Error] Both input file and output file are required.\n"
+msgstr "[错误] 输入文件和输出文件都是必填的。\n"
+
+#: main.go:34
+msgid "failed to open input file %q: %+v"
+msgstr "打开输入文件 %q 失败: %+v"
+
+#: main.go:40
+msgid "failed to open output file %q: %+v"
+msgstr "打开输出文件 %q 失败: %+v"
+
+#: main.go:47
+msgid "failed to create lame: %+v"
+msgstr "调用 lame 失败: %+v"
+
+#: main.go:63
+msgid "failed to encode: %+v"
+msgstr "编码失败: %+v"
+
+#: main.go:92
+#, c-format
+msgid "Usage: %s -i <input file> -o <output file> [settings]"
+msgstr "用法: %s -i <输入文件> -o <输出文件> [选项]"
+
+#: main.go:93
+msgid "  -i <input file>\tthe input file name, wav or pcm"
+msgstr "  -i <输入文件>\t\twav 或 pcm 格式的输入文件名"
+
+#: main.go:94
+msgid "  -o <output file>\tthe output mp3 file name"
+msgstr "  -o <输出文件>\t\t输出的 mp3 文件名"
+
+#: main.go:95
+msgid "  [settings]"
+msgstr "  [选项]"
+
+#: main.go:96
+msgid ""
+"    -inBigEndian[=false]\tif the input file is in big-endian (default false)"
+msgstr "    -inBigEndian[=false]\t输入文件是否是大端序(默认值：false)"
+
+#: main.go:97
+msgid "    -inSampleRate <Hz>\t\tsample rate of input file (default 24000)"
+msgstr "    -inSampleRate <赫兹>\t输入文件的采样率(默认值：24000 赫兹)"
+
+#: main.go:98
+msgid "    -inChannels <num>\t\tchannels of input file, 1 or 2 (default 1)"
+msgstr "    -inChannels <声道数>\t输入文件的声道数，1 或 2（默认值：1）"
+
+#: main.go:99
+msgid "    -inBits <num>\t\tthe bit count of each sample (default 16)"
+msgstr "    -inBits <位数>\t\t输入文件的位数（默认值：16）"
+
+#: main.go:100
+msgid ""
+"    -outSampleRate <Hz>\t\tsample rate of output file (default 0, means same "
+"of input)"
+msgstr "    -outSampleRate <赫兹>\t输出文件采样率（默认值是 0, 表示使用和输入文件相同的值）"
+
+#: main.go:101
+msgid ""
+"    -outChannels <num>\t\tchannels of output file, 1 or 2 (default 0, means "
+"same of input)"
+msgstr "    -outChannels <声道数>\t输出文件声道数，1 或 2（默认值是 0, 表示使用和输入文件相同的值）"
+
+#: main.go:102
+msgid "    -quality <num>\t\tquality, 0-9, 0-highest, 9-lowest (default 0)"
+msgstr "    -quality <质量>\t\t输出质量，0-9, 0 表示最好，9 表示最差（默认值：0）"
+
+#: main.go:103
+msgid "    -lang <path>\t\tpath to po/mo file or dir"
+msgstr "    -lang <语言路径>\t\t指向 po/mo 文件或其文件夹"
