@@ -3,7 +3,7 @@ module github.com/youthlin/go-lame/cmd/mp3-encoder
 go 1.20
 
 require (
-	github.com/youthlin/go-lame v0.0.0-20230723032933-36a285897385
+	github.com/youthlin/go-lame v0.0.1
 	github.com/youthlin/t v0.0.7
 )
 

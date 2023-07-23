@@ -38,7 +38,7 @@ func PcmToMp3(pcmFileName, mp3FileName string) {
 	wr.InNumChannels = 1     // number of channels: 1, default: 1
 	wr.OutSampleRate = 24000 // output sample rate, default 0: same to input
 	wr.OutNumChannels = 1    // default 0: same to input
-	wr.OutQuality = 9        // 0: highest(default); 9: lowest 
+	wr.OutQuality = 0        // 0: highest(default); 9: lowest 
 	
 	io.Copy(wr, pcmFile)
 	wr.Close()
