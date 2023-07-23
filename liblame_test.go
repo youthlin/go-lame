@@ -8,7 +8,7 @@ import (
 )
 
 func Test_LibLame_Full(t *testing.T) {
-	fn := "res/1chan_s16ple.raw"
+	fn := "testdata/1chan_s16ple.raw"
 	f, _ := os.OpenFile(fn, os.O_RDONLY, 0700)
 	lame, err := NewLame()
 	if err != nil {

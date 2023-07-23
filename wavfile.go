@@ -1,9 +1,9 @@
 package lame
 
 import (
-	"io"
 	"encoding/binary"
 	"errors"
+	"io"
 )
 
 // WAV file spec reference:
@@ -12,13 +12,15 @@ import (
 // http://soundfile.sapp.org/doc/WaveFormat/
 
 type (
-	// The header of a common wav file, length=44B
+	// WavHeader is the header of a common wav file, length=44B
+	// wav 文件的文件头，长度 44B
 	WavHeader struct {
 		// RIFF Header
-		ChunkId   [4]byte // fixed "RIFF" or "RIFX" if the file is big-endian
+		ChunkId [4]byte // fixed "RIFF" or "RIFX" if the file is big-endian
 		WavHeaderRemaining
 	}
-
+	// WavHeaderRemaining ChunkId + WavHeaderRemaining = WavHeader
+	// wav 文件头，除去开始的 4 位魔数后剩下的部分。
 	WavHeaderRemaining struct {
 		ChunkSize int32   //  Size of the overall file - 8 bytes, in bytes (32-bit integer). Typically, you'd fill this in after creation.
 		Format    [4]byte // fixed "WAVE"
@@ -52,14 +54,16 @@ var (
 	chunkIdLe = [4]byte{'R', 'I', 'F', 'F'} // chunkId little-endian
 	chunkIdBe = [4]byte{'R', 'I', 'F', 'X'} // chunkId big-endian
 
-	format = [4]byte{'W', 'A', 'V', 'E'}
+	format      = [4]byte{'W', 'A', 'V', 'E'}
 	subChunk1Id = [4]byte{'f', 'm', 't', ' '}
 	subChunk2Id = [4]byte{'d', 'a', 't', 'a'}
 )
 
-// Try to read the wav header from the given reader
+// ReadWavHeader Try to read the wav header from the given reader
 // returns non-nil err if error occurs
 // NOTE: the reader's position would be permanently changed, even if the given data is corrupted
+// 尝试从一个输入流中读取 Wav 文件头，如果返回了错误说明输入流可能不是 wav 文件。
+// 注意调用该方法可能会改变输入流的状态，即使输入流不是 wav 文件。（意思是调用这个方法会真实读取掉数据，而不是 peek 数据）
 func ReadWavHeader(reader io.Reader) (hdr *WavHeader, err error) {
 	hdr = new(WavHeader)
 	err = binary.Read(reader, binary.LittleEndian, &hdr.ChunkId)
@@ -84,19 +88,22 @@ func ReadWavHeader(reader io.Reader) (hdr *WavHeader, err error) {
 	return
 }
 
+// IsBigEndian return true if is big-endian
+// 是否是大端序
 func (hdr *WavHeader) IsBigEndian() bool {
 	return hdr.ChunkId == chunkIdBe
 }
 
-// build an encodeOptions object by wavHeader
+// ToEncodeOptions build an encodeOptions object by wavHeader.
+// 从 wav 文件头构建编码为 mp3 的配置项。
 func (hdr *WavHeader) ToEncodeOptions() EncodeOptions {
 	return EncodeOptions{
 		InBigEndian:     hdr.IsBigEndian(),
 		InSampleRate:    int(hdr.SampleRate),
 		InBitsPerSample: int(hdr.BitsPerSample),
 		InNumChannels:   int(hdr.NumChannels),
-		OutSampleRate:   int(hdr.SampleRate), // default: remains unchanged
-		OutMode:         MODE_STEREO,
+		OutSampleRate:   int(hdr.SampleRate),  // default: remains unchanged
+		OutNumChannels:  int(hdr.NumChannels), // default: remains unchanged
 		OutQuality:      0,
 	}
 }

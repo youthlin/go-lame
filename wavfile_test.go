@@ -1,18 +1,17 @@
 package lame
 
 import (
-	"testing"
 	"os"
-	"./compare"
+	"testing"
 )
 
 func Test_ReadWavHeader(t *testing.T) {
 	tests := []struct {
-		fn string
+		fn  string
 		hdr WavHeader
 	}{
 		{
-			fn: "res/1chan_s16ple.wav",
+			fn: "testdata/1chan_s16ple.wav",
 			hdr: WavHeader{
 				ChunkId: chunkIdLe,
 				WavHeaderRemaining: WavHeaderRemaining{
@@ -45,11 +44,8 @@ func Test_ReadWavHeader(t *testing.T) {
 				t.Errorf("Case#%d, %s", idx, err.Error())
 				return
 			}
-			diffs, err := compare.Compare(&test.hdr, &hdr)
-			if err != nil {
-				t.Errorf("%s", err.Error())
-			} else if len(diffs) > 0 {
-				t.Errorf("%#v", diffs)
+			if *hdr != test.hdr {
+				t.Errorf("Case#%d, got hdr=%#v, expected=%#v", idx, hdr, test.hdr)
 			}
 		})
 	}
@@ -60,4 +56,3 @@ func Test_LameStruct(t *testing.T) {
 	t.Logf("%#v", l.lgs)
 	t.Logf("%#v", err)
 }
-

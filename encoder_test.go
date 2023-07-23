@@ -1,14 +1,14 @@
 package lame
 
 import (
-	"testing"
-	"os"
 	"io"
+	"os"
+	"testing"
 )
 
 func Test_Encoder_Full(t *testing.T) {
-	fin, _ := os.OpenFile("res/1chan_s16ple.raw", os.O_RDONLY, 0700)
-	fout, _ := os.OpenFile("out2.mp3", os.O_WRONLY | os.O_TRUNC | os.O_CREATE, 0755)
+	fin, _ := os.OpenFile("testdata/1chan_s16ple.raw", os.O_RDONLY, 0700)
+	fout, _ := os.OpenFile("out2.mp3", os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0755)
 	wr, err := NewWriter(fout)
 	if err != nil {
 		t.Errorf("cannot create lame writer, %s", err.Error())
@@ -16,7 +16,7 @@ func Test_Encoder_Full(t *testing.T) {
 	wr.InNumChannels = 1
 	wr.InSampleRate = 16000
 	wr.OutSampleRate = 16000
-	wr.OutMode = MODE_MONO
+	wr.OutNumChannels = 1
 
 	_, err = io.Copy(wr, fin)
 	if err != nil {
