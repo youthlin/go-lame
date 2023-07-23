@@ -19,7 +19,7 @@ go get -u github.com/youthlin/go-lame
 ```
 go install github.com/youthlin/go-lame/cmd/mp3-encoder@latest
 # execute the binary to show usage
-mp3-incoder
+mp3-encoder
 ```
 
 ## Examples
