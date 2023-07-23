@@ -14,8 +14,10 @@ go get -u github.com/youthlin/go-lame
 ```
 
 ### Cmdline tool
+- [mp3-encoder](./cmd/mp3-encoder/)
+
 ```
-go install github.com/youthlin/go-lame/cmd/mp3-encoder
+go install github.com/youthlin/go-lame/cmd/mp3-encoder@latest
 # execute the binary to show usage
 mp3-incoder
 ```
